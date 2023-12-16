@@ -1,0 +1,23 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}Actors{% endblock %}
+{% block content %}
+
+<div class="actors">
+    <div class="container">
+        <h1 class="actors_title">Actors:</h1>
+        <ul class="actors_inner">
+            {% for actor in actors %}
+                <li class="actors_item">
+                    <img src="{{actor.image.url}}" alt="Actor Image">
+                    <div class="actors_content">
+                      <h3>{{actor.name}}</h3>
+                      <h6>{{actor.age}}</h6>
+                      <div>{{actor.description}}</div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

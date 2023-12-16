@@ -1,0 +1,32 @@
+{% extends 'movies/base.html' %}
+{% block title %}DodgeNet{% endblock %}
+{% block content %}
+<!-- Movies -->
+    <div class="main_content">
+        <div class="container">
+            <div class="main_title">Movies:</div>
+            <div class="main_inner">
+                {% for movie in movies %}
+                    <a href="{{ movie.get_absolute_url }}" class="main_item">
+                        <img src="{{movie.poster.url}}" alt="Movie Image">
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<!-- Series -->
+    <div class="main_content">
+        <div class="container">
+            <div class="main_title">Series:</div>
+            <div class="main_inner">
+                {% for serial in series %}
+                    <a href="{{ serial.get_absolute_url }}" class="main_item">
+                        <img src="{{serial.poster.url}}" alt="Movie Image">
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

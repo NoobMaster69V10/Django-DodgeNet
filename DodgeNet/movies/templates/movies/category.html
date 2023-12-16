@@ -1,0 +1,18 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}{{cat.category}}{% endblock %}
+{% block content %}
+
+<div class="category">
+    <div class="container">
+        <h1 class="category_title">{{cat.category}}:</h1>
+        <ul class="category_inner">
+            {% for info in info %}
+                <a href="{{info.get_absolute_url}}" class="category_item">
+                    <img src="{{info.poster.url}}" alt="Category Image">
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

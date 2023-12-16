@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'movies/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'movies/img/fav-icon/fav.svg' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<!-- SVG -->
+<div class="svg" style="display: none;">
+    <svg style="display: none;">
+        <symbol id="arrow-right" viewBox="0 0 24 24">
+            <g>
+                <path fill-rule="evenodd" d="M.366 19.708c.405.39 1.06.39 1.464 0l8.563-8.264a1.95 1.95 0 0 0 0-2.827L1.768.292A1.063 1.063 0 0 0 .314.282a.976.976 0 0 0-.011 1.425l7.894 7.617a.975.975 0 0 1 0 1.414L.366 18.295a.974.974 0 0 0 0 1.413"></path>
+            </g>
+        </symbol>
+    </svg>
+    <svg style="display: none;">
+        <symbol id="arrow-left" viewBox="0 0 24 24">
+            <g>
+                <path fill-rule="evenodd" d="M10.634.292a1.063 1.063 0 0 0-1.464 0L.607 8.556a1.95 1.95 0 0 0 0 2.827l8.625 8.325c.4.385 1.048.39 1.454.01a.975.975 0 0 0 .01-1.425l-7.893-7.617a.975.975 0 0 1 0-1.414l7.83-7.557a.974.974 0 0 0 0-1.413"></path>
+            </g>
+        </symbol>
+    </svg>
+</div>
+
+
+<!-- All -->
+    <div class="all">
+        <header class="header" id="header">
+            <div class="container">
+                <div class="header_inner">
+                    <a href="/" class="header_logo">Dodge<span>.Net</span></a>
+                    <nav class="nav" id="nav">
+                        <a href="/movies" class="nav_link">Movies</a>
+                        <a href="/series" class="nav_link">Series</a>
+                        <a href="/actors" class="nav_link">Actors</a>
+                    </nav>
+                    <!-- Mobile button -->
+                    <button class="nav_toggle" id="nav-toggle" type="button">
+                        <span class="nav_toggle__item">Menu</span>
+                    </button>
+                    <a href="/" style="opacity: 0" class="log_in_btn">Log In</a>
+                </div>
+
+            </div>
+        </header>
+        <main class="main">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+<!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{% static 'movies/js/main.js'%}" type="text/javascript"></script>
+</body>
+</html>

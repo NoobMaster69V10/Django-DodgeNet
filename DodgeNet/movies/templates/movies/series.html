@@ -1,0 +1,87 @@
+{% extends 'movies/base.html' %}
+{% block title %}{{series.title}}{% endblock %}
+{% block content %}
+<!-- Movies -->
+    <div class="movie">
+        <div class="container">
+            <div class="movie_inner">
+                <video src="/" controls></video>
+                <div class="movie_item">
+                    <div class="movie_item_left">
+                        <img src="{{series.poster.url}}" alt="Movie Image">
+                    </div>
+                    <div class="movie_item_right">
+                        <h1 class="movie_title">{{series.title}}</h1>
+                        <h3>Date : <span>{{series.year}}</span></h3>
+                        <h3>Country : <span>{{series.country}}</span></h3>
+                        <h3>Directors : {% for director in series.directors.all %}
+                                            <span>{{director.name}} </span>
+                                        {% endfor %}
+                        </h3>
+                        <h3>Actors : {% for actor in series.actors.all %}
+                                            <span>{{actor.name}} </span>
+                                     {% endfor %}
+                        </h3>
+                        <h3>Description:</h3>
+                        <div>{{series.description}}</div>
+                        <div class="rating">
+                            <div class="imdb">IMDB 6.3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie_shots">
+                {% if movie.movieshots_set.all %}
+                    <h1 class="movie_shots_title">Shots from {{movie.title}}:</h1>
+
+                    <ul class="movie_shots_inner">
+                        {% for image in movie.movieshots_set.all%}
+                            <li class="movie_shots_item">
+                                <img src="{{image.image.url}}" alt="Shots from movie">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            {% if series.review_set.all %}
+                <div class="comments">
+                    <h1 class="comments_title">Comments:</h1>
+                    <div class="comments_inner">
+                        {% for review in series.review_set.all %}
+                            <div class="comments_item">
+                                <h1>{{review.name}}:</h1>
+                                <h3>{{review.email}}</h3>
+                                <div>{{review.text}}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="comment">
+                <div class="comment_inner">
+                    <h1 class="comment_title">Add comment here:</h1>
+                    <form action="{% url 'add_series_review' series.id %}" method="post" class="comment_form">
+                        {% csrf_token %}
+                        <label for="name" class="name">
+                            <h1>Name:</h1>
+                            <input type="text" name="name" id="name">
+                        </label>
+                        <label for="email" class="email">
+                            <h1>Email:</h1>
+                            <input type="email" name="email" id="email">
+                        </label>
+                        <label for="text" class="comment">
+                            <h1>Comment:</h1>
+                            <textarea name="text" id="text" cols="" rows=""></textarea>
+                        </label>
+                        <label for="submit_button">
+                            <input type="submit" name="submit_button" id="submit_button" value="Send" class="submit_button">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
